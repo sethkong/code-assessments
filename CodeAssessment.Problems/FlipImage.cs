@@ -44,11 +44,12 @@ namespace CodeAssessment.Problems
         /// <param name="matrix">The input matrix to be printed.</param>
         public void PrintMatrix(int[][] matrix)
         {
-           for(var i = 0; i < matrix[0].Length; i++)
+            for (var i = 0; i < matrix[0].Length; i++)
             {
                 if (i == 0)
                     Console.WriteLine("[");
-                for(var j = 0; j < matrix[0].Length; j++)
+
+                for (var j = 0; j < matrix[0].Length; j++)
                 {
                     if (j == 0)
                         Console.Write("\t[");
@@ -57,11 +58,13 @@ namespace CodeAssessment.Problems
                     {
                         Console.Write("{0}", matrix[i][j]);
                         Console.WriteLine("]");
-                    } else
+                    }
+                    else
                     {
                         Console.Write("{0}, ", matrix[i][j]);
                     }
                 }
+
                 if (i == matrix[0].Length - 1)
                     Console.WriteLine("]");
             }

@@ -30,7 +30,7 @@ namespace CodeAssessment.Problems.Tests
         int[][] expectedMatrix2;
 
         private IFlipImage flipImage;
-        
+
         /// <summary>
         /// Initializes and accquires resources for testing to verify the correction of 
         /// the {FlipImage}.
@@ -38,7 +38,7 @@ namespace CodeAssessment.Problems.Tests
         [TestInitialize]
         public void Initialize()
         {
-            this.Matrix1 = new int[4][] 
+            this.Matrix1 = new int[4][]
             {
                 new int[] {1, 0, 1, 0 },
                 new int[] { 0, 0, 1, 1},
@@ -105,9 +105,9 @@ namespace CodeAssessment.Problems.Tests
             if (matrix1[0].Length != matrix2[0].Length || matrix1.Length != matrix2.Length)
                 return false;
 
-            for(var r = 0; r < matrix1[0].Length; r++)
+            for (var r = 0; r < matrix1[0].Length; r++)
             {
-                for(var c = 0; c < matrix1[0].Length; c++)
+                for (var c = 0; c < matrix1[0].Length; c++)
                 {
                     if (matrix1[r][c] != matrix2[r][c])
                         return false;

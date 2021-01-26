@@ -31,7 +31,7 @@ namespace CodeAssessment.Problems
                 };
 
             Console.WriteLine("The input matrix 1");
-            flipImage.PrintMatrix(matrix1); 
+            flipImage.PrintMatrix(matrix1);
             var outputMatrix1 = flipImage.FlipAndInvertImage(matrix1);
             Console.WriteLine("The output matrix 1 after flipped and inverted");
             flipImage.PrintMatrix(outputMatrix1);

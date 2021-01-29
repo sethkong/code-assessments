@@ -24,18 +24,68 @@ namespace CodeAssessment.Problems
         /// <returns>The output matrix whose elements value had been flipped and inverted.</returns>
         public int[][] FlipAndInvertImage(int[][] matrix)
         {
-            var matrixLength = matrix[0].Length;
-            for (var row = 0; row < matrixLength; row++)
-            {
-                for (var col = 0; col < (matrixLength + 1) / 2; col++)
-                {
-                    var tempElement = matrix[row][col] ^ 1;
-                    matrix[row][col] = matrix[row][matrixLength - 1 - col] ^ 1;
-                    matrix[row][matrixLength - 1 - col] = tempElement;
+            if (!this.ValidateInputMatrix(matrix))
+                return null;
 
+            foreach (var matrixRow in matrix)
+            {
+                this.FlipAndInvertMatrixRow(matrixRow);
+            }
+
+            return matrix;
+        }
+        /// <summary>
+        /// Validates input matrix.
+        /// 1 <= A.length = A[0].length <= 20
+        /// 0 <= A[i][j] <= 1
+        /// </summary>
+        /// <param name="matrix">The input matrix.</param>
+        /// <returns>The boolean indicates whether the input is valid.</returns>
+        public bool ValidateInputMatrix(int[][] matrix)
+        {
+            // 1 <= A.length = A[0].length <= 20
+            if (matrix == null || matrix.Length < 1 || matrix[0].Length > 20 
+                || matrix.Length != matrix[0].Length)
+                return false;
+
+            // 0 <= A[i][j] <= 1
+            foreach (var row in matrix)
+            {
+                for(var col = 0; col < matrix[0].Length; col++)
+                {
+                    if (row[col] < 0 && row[col] > 1)
+                        return false;
                 }
             }
-            return matrix;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Flips and inverts a matrix row.
+        /// </summary>
+        /// <param name="matrixRow">A single row of matrix to be flipped and inverted.</param>
+        public void FlipAndInvertMatrixRow(int[] matrixRow)
+        {
+            var rowLength = matrixRow.Length;
+            var mid = (rowLength + 1) / 2;
+
+            for (var col = 0; col < mid; col++)
+            {
+                var matrixElement = matrixRow[col];                
+                matrixRow[col] = this.InvertMatrixElement(matrixRow[rowLength - 1 - col]);
+                matrixRow[rowLength - 1 - col] = this.InvertMatrixElement(matrixElement);
+            }
+        }
+
+        /// <summary>
+        /// Inverts a matrix element.
+        /// </summary>
+        /// <param name="matrixElement">The binary matrix element</param>
+        /// <returns>The inserted binary matrix element.</returns>
+        public int InvertMatrixElement(int matrixElement)
+        {
+            return matrixElement ^ 1;
         }
 
         /// <summary>
